@@ -3,7 +3,7 @@ body {
     background-color: firebrick;
 }
 #content {
-    width:100%; margin-left:auto;margin-right:5% auto;
+    width:100%; margin-left:auto;margin-right:auto;    position: relative;
 }
 
 a, a:hover{
@@ -13,13 +13,9 @@ a:hover{
     color:inherit;
 }
 
-.content-container {
-    position: relative;
-}
-
 .inner-body{
     margin:4em;
-    min-width: 20em;
+    width: 80em;
     background-color:#FFF;
     padding-top:8em;
     padding-left:2em;

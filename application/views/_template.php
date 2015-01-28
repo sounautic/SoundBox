@@ -32,13 +32,13 @@ if (!defined('APPPATH'))
                 <a id="icon-container" href="/">
                     <div class="brand icon">
                         <!--img src="/assets/images/logo.png"/-->
-                        <h1 class="" id="icon-text">{title}</h1>
+                        <h3 class="" id="icon-text">{title}</h3>
                     </div>
                 </a>
                 <div class="fill-parent">
-                <div class="inner-body">
-                    {content}
-                </div>
+                    <div class="inner-body">
+                        {content}
+                    </div>
                 </div>
             </div>
             <div id="footer" class="span12">

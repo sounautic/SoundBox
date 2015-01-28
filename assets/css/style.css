@@ -18,16 +18,17 @@ a:hover{
 }
 
 .inner-body{
-    margin-left:3em;
-    margin-right:3em;
-    margin-top:8em;
-    min-width: 50em;
+    margin:4em;
+    min-width: 20em;
     background-color:#FFF;
+    padding-top:8em;
+    padding-left:2em;
+    padding-right:2em;
 }
 
 .icon{
     position: absolute;
-    top:-5em;
+    top:-3em;
     left:0px;
     z-index: 15;
     display:block;
@@ -35,7 +36,7 @@ a:hover{
 
 div.icon{
     background:no-repeat url("/assets/images/logo.png") left;
-    width:20em;
+    width:17em;
     height:130px;
 }
 
@@ -50,10 +51,9 @@ div.icon{
     margin:0em;
 }
 
+
 #icon-text{
-    margin-top: auto;
-    margin-bottom: auto;
-    
+    margin-top:36%;
 }
 
 #footer {font-size: small; font-style:italic;text-align:center;}

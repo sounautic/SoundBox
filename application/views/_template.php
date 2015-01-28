@@ -21,18 +21,25 @@ if (!defined('APPPATH'))
     </head>
     <body>
         <div class="container">
+            <!--
             <div class="navbar">
                 <div class="navbar-inner">
                     {menubar} 
                 </div>
             </div>           
-            <div id="content" class='inner-body'>
-                <div class ="brand icon">
-                    <a class="inline" href="/"><img src="/assets/images/logo.png"/></a>
-                    <h1 class = "inline">{title}</h1>
+            -->
+            <div id="content" class='content-container'>
+                <a id="icon-container" href="/">
+                    <div class="brand icon">
+                        <!--img src="/assets/images/logo.png"/-->
+                        <h1 class="" id="icon-text">{title}</h1>
+                    </div>
+                </a>
+                <div class="fill-parent">
+                <div class="inner-body">
+                    {content}
                 </div>
-
-                {content}
+                </div>
             </div>
             <div id="footer" class="span12">
                 Copyright &copy; 2014,  <a href="mailto:someone@somewhere.com">Me</a>.

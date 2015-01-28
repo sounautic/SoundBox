@@ -23,13 +23,14 @@ if (!defined('APPPATH'))
         <div class="container">
             <div class="navbar">
                 <div class="navbar-inner">
-
                     {menubar} 
                 </div>
             </div>           
-            <div id="content">
-                <a class="brand inline" href="/"><img src="/assets/images/logo.png"/></a>
-                <h1 class = "inline">{title}</h1>
+            <div id="content" class='inner-body'>
+                <div class ="brand icon">
+                    <a class="inline" href="/"><img src="/assets/images/logo.png"/></a>
+                    <h1 class = "inline">{title}</h1>
+                </div>
 
                 {content}
             </div>

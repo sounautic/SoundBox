@@ -14,26 +14,12 @@ a:hover{
 }
 
 .inner-body{
-    margin:4em;
-    width: 80em;
     background-color:#FFF;
-    padding-top:8em;
-    padding-left:2em;
-    padding-right:2em;
+    padding:2em;
 }
 
 .icon{
-    position: absolute;
-    top:-3em;
-    left:0px;
     z-index: 15;
-    display:block;
-}
-
-div.icon{
-    background:no-repeat url("/assets/images/logo.png") left;
-    width:17em;
-    height:130px;
 }
 
 .fill-parent{
@@ -41,16 +27,18 @@ div.icon{
     height:100%;
 }
 
+#icon-container img{
+    margin-top:0.5em;
+    width:3em;
+    height:3em;
+}
+#icon-container div{
+}
+
 #icon-container{
-    display:block;
-    text-align:right;
-    margin:0em;
+    display:inline;
 }
 
-
-#icon-text{
-    margin-top:36%;
-}
 
 #footer {font-size: small; font-style:italic;text-align:center;}
 .row>div {margin-bottom:10px;}

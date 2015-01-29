@@ -16,10 +16,16 @@ if (!defined('APPPATH'))
         <title>{title}</title>
         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-        <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+        <link type="text/css" href="/assets/css/materialize.css" rel="stylesheet"/>
+        <link type="text/css" href="/assets/css/materialize.min.css" rel="stylesheet"/>
+        <link type="text/css" href="/assets/css/style.css" rel="stylesheet"/>
     </head>
     <body>
+        <div class="container">
+            <a id="icon-container" href="/">
+                <img src="/assets/images/logo.png" />
+            </a>
+        </div>
         <div class="container">
             <!--
             <div class="navbar">
@@ -29,12 +35,7 @@ if (!defined('APPPATH'))
             </div>           
             -->
             <div id="content" class='content-container'>
-                <a id="icon-container" href="/">
-                    <div class="brand icon">
-                        <!--img src="/assets/images/logo.png"/-->
-                        <h3 class="" id="icon-text">{title}</h3>
-                    </div>
-                </a>
+
                 <div class="fill-parent">
                     <div class="inner-body">
                         {content}
@@ -46,6 +47,6 @@ if (!defined('APPPATH'))
             </div>
         </div>
         <script src="/assets/js/jquery-1.11.1.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/materialize.js"></script>
     </body>
 </html>

@@ -31,9 +31,9 @@ if (!defined('APPPATH'))
                     <img src="/assets/images/logo.png" class="brand-logo" />
                 </a>
                 <ul id="nav-mobile" class="right side-nav">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="components.html">Components</a></li>
-                    <li><a href="javascript.html">JavaScript</a></li>
+                    <li><a href="sass.html">Profile</a></li>
+                    <li><a href="components.html">Playlists</a></li>
+                    <li><a href="javascript.html">Rankings</a></li>
                 </ul>
             </div>
         </nav>

@@ -38,13 +38,6 @@ if (!defined('APPPATH'))
             </div>
         </nav>
         <div class="container">
-            <!--
-            <div class="navbar">
-                <div class="navbar-inner">
-                    {menubar} 
-                </div>
-            </div>           
-            -->
             <div id="content" class='content-container'>
 
                 <div class="fill-parent">

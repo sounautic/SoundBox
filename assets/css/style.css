@@ -1,0 +1,59 @@
+/* CSS definition file containing site stylesheet */
+body {
+    background-color: firebrick;
+}
+
+nav{
+    background-color:maroon;
+}
+
+#content {
+    width:100%; margin-left:auto;margin-right:auto;    position: relative;
+}
+
+a, a:hover{
+    color:inherit;
+}
+a:hover{
+    color:inherit;
+}
+
+.inner-body{
+    background-color:#FFF;
+    padding:2em;
+}
+
+.icon{
+    z-index: 15;
+}
+
+.fill-parent{
+    width:100%;
+    height:100%;
+}
+
+#icon-container img{
+    margin-top:0.1em;
+    margin-left:0.2em;
+    width:1.8em;
+    height:1.8em;
+}
+#icon-container div{
+}
+
+@icon-font {
+    font-family: iconFont;
+    src: url("/assets/font/material-design-icons/Material-Design-Icons.woff");
+}
+
+#icon-container{
+}
+
+div.row{
+    margin:0em;
+    font-family:roboto;
+}
+
+
+#footer {font-size: small; font-style:italic;text-align:center;}
+.row>div {margin-bottom:10px;}

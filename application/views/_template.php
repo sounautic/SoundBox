@@ -21,11 +21,22 @@ if (!defined('APPPATH'))
         <link type="text/css" href="/assets/css/style.css" rel="stylesheet"/>
     </head>
     <body>
-        <div class="container">
-            <a id="icon-container" href="/">
-                <img src="/assets/images/logo.png" />
-            </a>
-        </div>
+        <nav>
+            <div class="nav-wrapper container">
+                <!--a href="#" class="brand-logo" id="icon-container">
+                    <img src="/assets/images/logo.png" />
+                </a-->
+                <a href="#" class="brand-logo" id="icon-container">
+                    SOUNAUTIC
+                    <img src="/assets/images/logo.png" class="brand-logo" />
+                </a>
+                <ul id="nav-mobile" class="right side-nav">
+                    <li><a href="sass.html">Profile</a></li>
+                    <li><a href="components.html">Playlists</a></li>
+                    <li><a href="javascript.html">Rankings</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="container">
             <!--
             <div class="navbar">

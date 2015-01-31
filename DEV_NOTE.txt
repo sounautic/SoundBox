@@ -1,0 +1,23 @@
+[ App entire goal ] 
+	- Content Management System with 2 different perspective on data / search function
+	- "Elegant and obvious way to reach the three main pages"
+
+
+================================================================================
+  Requirement & Status for Stage 1 (with mark schemes) by January 31 @ 9:00 PM
+================================================================================
+
+Done
+----
+Design proposal / writeup 	(3)	- Complete
+Comment & Programming style	(2)	- Fine
+Workflow process		(1)	- Good
+
+Need to be done
+---------------
+Works properly			(3)
+Models with mock data		(3)
+Views, template plus 4 layouts	(3)
+Controllers, home plus three 	(2)
+Appropriate & Consistent UI	(2)
+

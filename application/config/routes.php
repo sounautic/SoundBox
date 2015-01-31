@@ -91,7 +91,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['test'] = 'welcome';
 $route['rankings'] = 'rankings';
+$route['ranking'] = 'rankings';
 $route['profile'] = 'profile';
-
+$route['about'] = 'about';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

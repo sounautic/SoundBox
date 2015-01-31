@@ -38,7 +38,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profile extends Application  {
+class About extends Application  {
     
     public function __construct() {
         parent::__construct();
@@ -60,9 +60,9 @@ class Profile extends Application  {
      */
     public function index() {
         
-        $this->params['pagebody'] = 'profile';
-        $this->params['title'] = 'Profile';
-        $this->params['username'] = 'Wonho';
+        $this->params['pagebody'] = 'about';
+        $this->params['title'] = 'About us';
+        
         $this->render();
     }
 

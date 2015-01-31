@@ -38,7 +38,7 @@ if (!defined('APPPATH'))
                             Playlists
                         </a>
                     </li>
-                    <li><a href="ranking">Rankings</a></li>
+                    <li><a href="rankings">Rankings</a></li>
                 </ul>
             </div>
         </nav>
@@ -83,10 +83,14 @@ if (!defined('APPPATH'))
 
         <!--footer-->
         <footer class="page-footer">
-            <div id="footer">
-                Copyright &copy; 2015,  <a href="mailto:someone@somewhere.com">sounautic</a>.
+            <div class="footer-copyright">
+                <div class="container">
+                   Copyright &copy; 2015,  <a href="mailto:someone@somewhere.com">sounautic</a>.
+                    <a class="grey-text text-lighten-4 right" href="about">About us</a>
+                </div>
             </div>
         </footer>
+
         <script src="/assets/js/jquery-1.11.1.min.js"></script>
         <script src="/assets/js/materialize.min.js"></script>
         <script src="/assets/js/materialize.js"></script>

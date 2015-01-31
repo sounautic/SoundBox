@@ -1,8 +1,50 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * A mock database model similiar to one one from lab3
  */
+class Users extends CI_Model {
 
+    // mock data. Will be replaced with a sql data source eventually
+    var $data = array(
+        array('id' => '1', 'username' => 'youtuber1',
+            'pic' => 'youtuber1.jpg', 'private' => 'false'),
+        array('id' => '2', 'username' => 'youtuber2', 
+            'pic' => 'youtuber2.png', 'private' => 'true'),
+        array('id' => '3', 'username' => 'youtuber3', 
+            'pic' => 'youtuber3.png', 'private' => 'false')
+    );
+
+    // Constructor
+    public function __construct() {
+        parent::__construct();
+    }
+
+    // retrieve a single user identified by the user id
+    public function get($which) {
+        // iterate over the data until we find the one we want
+        foreach ($this->data as $user) {
+            if ($user['id'] == $which) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+    // retrieve all users
+    public function all() {
+        return $this->data;
+    }
+
+    // retrieve the first user
+    public function first() {
+        return $this->data[0];
+    }
+
+    // retrieve the last user
+    public function last() {
+        $index = count($this->data) - 1;
+        return $this->data[$index];
+    }
+
+}

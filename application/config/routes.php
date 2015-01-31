@@ -90,6 +90,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['test'] = 'welcome';
+$route['rankings'] = 'rankings';
+$route['profile'] = 'profile';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

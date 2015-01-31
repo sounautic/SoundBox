@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * Default controller
  */
 class Application extends CI_Controller {
@@ -17,9 +16,9 @@ class Application extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->params = array();
-        $this->params['title'] = 'sounautic';    // our default title
+        $this->params['title'] = 'SoundBox'; 
         $this->errors = array();
-        $this->params['pageTitle'] = 'welcome';   // our default page
+        $this->params['pageTitle'] = ''; 
     }
 
     /**
@@ -33,12 +32,9 @@ class Application extends CI_Controller {
                 $this->params['pagebody'], $this->params, true
         );
 
-        // finally, build the browser page!
-        //$this->data['data'] = &$this->data;
+
+        //using the parser to build the webpage
         $this->parser->parse('_template', $this->params);
     }
 
 }
-
-/* End of file MY_Controller.php */
-/* Location: application/core/MY_Controller.php */

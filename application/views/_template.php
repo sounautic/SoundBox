@@ -32,13 +32,13 @@ if (!defined('APPPATH'))
                     <img src="/assets/images/logo.png" class="brand-logo" />
                 </a>
                 <ul id="nav-mobile" class="right side-nav">
-                    <li><a href="profile">Profile</a></li>
+                    <li><a href="/profile">Profile</a></li>
                     <li>
                         <a href="javascript:$('.button-collapse').sideNav('show');">
                             Playlists
                         </a>
                     </li>
-                    <li><a href="rankings">Rankings</a></li>
+                    <li><a href="/rankings">Rankings</a></li>
                 </ul>
             </div>
         </nav>

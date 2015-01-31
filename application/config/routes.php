@@ -93,6 +93,7 @@ $route['test'] = 'welcome';
 $route['rankings'] = 'rankings';
 $route['ranking'] = 'rankings';
 $route['profile'] = 'profile';
+$route['profile/(:num)'] = 'profile/get/$1';
 $route['about'] = 'about';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

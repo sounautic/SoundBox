@@ -38,11 +38,12 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Profile extends Application  {
-    
+class Profile extends Application {
+
     public function __construct() {
         parent::__construct();
     }
+
     /**
      * Index Page for this controller.
      *
@@ -59,10 +60,32 @@ class Profile extends Application  {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        
         $this->params['pagebody'] = 'profile';
         $this->params['title'] = 'Profile';
-        $this->params['username'] = 'Wonho';
+
+        $res = $this->users->first();
+
+        //merge the obtained data
+        $this->params = array_merge($this->params, $res);
+
+        $this->render();
+    }
+
+    public function get($id) {
+
+        $res = $this->users->get($id);
+        if ($res['private'] == 'false') {
+            $this->params['pagebody'] = 'profile';
+            //concat the title with the name of the user
+            $this->params['title'] = 'Profile of ' . $res['username'];
+            //merge the obtained data
+            $this->params = array_merge($this->params, $res);
+        } else { //trying to access a private profile
+            $this->params['pagebody'] = 'profile_no_access';
+            $this->params['title'] = 'Ooops!';
+            
+        }
+        
         $this->render();
     }
 

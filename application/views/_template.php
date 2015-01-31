@@ -21,22 +21,54 @@ if (!defined('APPPATH'))
         <link type="text/css" href="/assets/css/style.css" rel="stylesheet"/>
     </head>
     <body>
+        <!--navigation bar-->
         <nav>
             <div class="nav-wrapper container">
                 <!--a href="#" class="brand-logo" id="icon-container">
                     <img src="/assets/images/logo.png" />
                 </a-->
                 <a href="#" class="brand-logo" id="icon-container">
-                    SOUNAUTIC
+                    SoundBox
                     <img src="/assets/images/logo.png" class="brand-logo" />
                 </a>
                 <ul id="nav-mobile" class="right side-nav">
                     <li><a href="sass.html">Profile</a></li>
-                    <li><a href="components.html">Playlists</a></li>
+                    <li>
+                        <a href="javascript:$('.button-collapse').sideNav('show');">
+                            Playlists
+                        </a>
+                    </li>
                     <li><a href="javascript.html">Rankings</a></li>
                 </ul>
             </div>
         </nav>
+
+
+        <ul id="slide-out" class="side-nav full">
+            <li><a href="#!">Playlist 1</a></li>
+            <li><a href="#!">Playlist 2</a></li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li>
+                        <div class="collapsible-header">
+                            Playlist 3
+                            <i class="mdi-navigation-arrow-drop-down"></i></div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="#!">Video 1</a></li>
+                                <li><a href="#!">Video 2</a></li>
+                                <li><a href="#!">Video 3</a></li>
+                                <li><a href="#!">Video 4<span class="badge">playing</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+
+
+        <!--container for the content of the page-->
         <div class="container">
             <div id="content" class='content-container'>
 
@@ -46,11 +78,18 @@ if (!defined('APPPATH'))
                     </div>
                 </div>
             </div>
-            <div id="footer" class="span12">
-                Copyright &copy; 2014,  <a href="mailto:someone@somewhere.com">Me</a>.
-            </div>
+
         </div>
+
+        <!--footer-->
+        <footer class="page-footer">
+            <div id="footer">
+                Copyright &copy; 2015,  <a href="mailto:someone@somewhere.com">sounautic</a>.
+            </div>
+        </footer>
         <script src="/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="/assets/js/materialize.min.js"></script>
         <script src="/assets/js/materialize.js"></script>
+        <script src="/assets/js/soundbox.js"></script>
     </body>
 </html>

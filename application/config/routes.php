@@ -95,5 +95,7 @@ $route['ranking'] = 'rankings';
 $route['profile'] = 'profile';
 $route['profile/(:num)'] = 'profile/get/$1';
 $route['about'] = 'about';
+$route['play'] = 'play';
+$route['play/(:num)'] = 'play/play/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

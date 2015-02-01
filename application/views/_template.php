@@ -32,9 +32,12 @@ if (!defined('APPPATH'))
                     <img src="/assets/images/logo.png" class="brand-logo" />
                 </a>
                 <ul id="nav-mobile" class="right side-nav">
-                    <li><a href="/profile">Profile</a></li>
+                    <!--this will eventually link to the 
+                    logged in user's profile.
+                    profile id 1 is used for the time being-->
+                    <li><a href="/profile/1">Profile</a></li>
                     <li>
-                        <a href="javascript:$('.button-collapse').sideNav('show');">
+                        <a href="/play">
                             Playlists
                         </a>
                     </li>
@@ -43,41 +46,13 @@ if (!defined('APPPATH'))
             </div>
         </nav>
 
-
-        <ul id="slide-out" class="side-nav full">
-            <li><a href="#!">Playlist 1</a></li>
-            <li><a href="#!">Playlist 2</a></li>
-            <li class="no-padding">
-                <ul class="collapsible collapsible-accordion">
-                    <li>
-                        <div class="collapsible-header">
-                            Playlist 3
-                            <i class="mdi-navigation-arrow-drop-down"></i></div>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="#!">Video 1</a></li>
-                                <li><a href="#!">Video 2</a></li>
-                                <li><a href="#!">Video 3</a></li>
-                                <li><a href="#!">Video 4<span class="badge">playing</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-
-
         <!--container for the content of the page-->
         <div class="container">
-            <div id="content" class='content-container'>
-
                 <div class="fill-parent">
-                    <div class="inner-body">
+                    <div class="inner-body fill-page">
                         {content}
                     </div>
                 </div>
-            </div>
 
         </div>
 

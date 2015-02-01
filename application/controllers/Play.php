@@ -58,7 +58,7 @@ class Play extends Application {
              * use the youtube api to create a list anyways
              */ 
             foreach ($res['content'] as $link) {
-                $this->params['content'] .= '<li><a href="'.$link.'">'.$link.'</a></li>';
+                $this->params['content'] .= '<li><a href="/play_video/'.substr($link,-11).'">'.$link.'</a></li>';
             }
         } else { //trying to access a private profile
             $this->params['pagebody'] = 'errors/access_restricted';

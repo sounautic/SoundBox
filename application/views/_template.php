@@ -35,6 +35,7 @@ if (!defined('APPPATH'))
                     <!--this will eventually link to the 
                     logged in user's profile.
                     profile id 1 is used for the time being-->
+                    <li><a href="/">Login</a></li>
                     <li><a href="/profile/1">Profile</a></li>
                     <li>
                         <a href="/play">
@@ -42,17 +43,18 @@ if (!defined('APPPATH'))
                         </a>
                     </li>
                     <li><a href="/rankings">Rankings</a></li>
+
                 </ul>
             </div>
         </nav>
 
         <!--container for the content of the page-->
         <div class="container">
-                <div class="fill-parent">
-                    <div class="inner-body fill-page">
-                        {content}
-                    </div>
+            <div class="fill-parent">
+                <div class="inner-body fill-page">
+                    {content}
                 </div>
+            </div>
 
         </div>
 
@@ -60,7 +62,7 @@ if (!defined('APPPATH'))
         <footer class="page-footer">
             <div class="footer-copyright">
                 <div class="container">
-                   Copyright &copy; 2015,  <a href="mailto:someone@somewhere.com">sounautic</a>.
+                    Copyright &copy; 2015,  <a href="mailto:someone@somewhere.com">sounautic</a>.
                     <a class="grey-text text-lighten-4 right" href="about">About us</a>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 /*
- * Menu navbar, just an unordered list
+ * Will be converting the navigation bar into template/data format
  */
 ?>
 <ul class="nav">

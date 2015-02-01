@@ -10,14 +10,13 @@
 Done
 ----
 Design proposal / writeup 	(3)	- Complete
-Comment & Programming style	(2)	- Fine
-Workflow process		(1)	- Good
+Models with mock data		(3)	- Complete
+Views, template plus 4 layouts	(3)	- Complete
+Controllers, home plus three 	(2)	- Complete
 
-Need to be done
----------------
-Works properly			(3)
-Models with mock data		(3)
-Views, template plus 4 layouts	(3)
-Controllers, home plus three 	(2)
-Appropriate & Consistent UI	(2)
+Works properly			(3)	- YES
+Appropriate & Consistent UI	(2)	- YES
+
+Comment & Programming style	(2)	- OK
+Workflow process		(1)	- OK
 

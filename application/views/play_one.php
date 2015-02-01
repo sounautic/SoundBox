@@ -1,8 +1,9 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<div id="body">
+    <p>{name}</p>
+    <br/>
+    <ul>
+    {content}
+    <li><a href="{data}">{data}</a></li>
+    {/content}
+    </ul>
+</div>

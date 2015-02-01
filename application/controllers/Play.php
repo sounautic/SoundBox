@@ -26,8 +26,9 @@ class Play extends Application {
     public function index() {
         $this->params['pagebody'] = 'play';
         $this->params['title'] = 'My playlists';
-
-        $res = $this->users->first();
+            
+        //for the time being we are pretending to be youtuber1
+        $res['playlists'] = $this->playlists->getByCreator('1');
 
         //merge the obtained data
         $this->params = array_merge($this->params, $res);
@@ -35,17 +36,21 @@ class Play extends Application {
         $this->render();
     }
 
+    /*
+     * for the time being this displays a list of videos. Will eventually
+     * integrate the youtube api to create a better UI
+     */
     public function play($id) {
 
         $res = $this->playlists->get($id);
         if ($res['private'] == 'false') {
-            $this->params['pagebody'] = 'profile';
+            $this->params['pagebody'] = 'play_one';
             //concat the title with the name of the user
-            $this->params['title'] = 'Profile of ' . $res['username'];
+            $this->params['title'] = 'Playlist - ' . $res['name'];
             //merge the obtained data
             $this->params = array_merge($this->params, $res);
         } else { //trying to access a private profile
-            $this->params['pagebody'] = 'profile_no_access';
+            $this->params['pagebody'] = 'errors/access_restricted';
             $this->params['title'] = 'Ooops!';
             
         }

@@ -83,7 +83,7 @@ class Profile extends Application {
         //merge the obtained data
             $this->params = array_merge($this->params, $res);
         } else { //trying to access a private profile
-            $this->params['pagebody'] = 'profile_no_access';
+            $this->params['pagebody'] = 'errors/profile_no_access';
             $this->params['title'] = 'Ooops!';
             
         }

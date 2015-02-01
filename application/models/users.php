@@ -7,11 +7,14 @@ class Users extends CI_Model {
 
     // mock data. Will be replaced with a sql data source eventually
     var $data = array(
-        array('id' => '1', 'username' => 'youtuber1',
+        array('id' => '1', 'username' => 'youtuber1', 'location' => 'Vancouver',
+            'first_name' => 'John', 'last_name' => 'Smith',
             'pic' => 'youtuber1.jpg', 'private' => 'false'),
-        array('id' => '2', 'username' => 'youtuber2', 
+        array('id' => '2', 'username' => 'youtuber2', 'location' => 'unknown', 
+            'first_name' => 'Waldo', 'last_name' => '',
             'pic' => 'youtuber2.png', 'private' => 'true'),
-        array('id' => '3', 'username' => 'youtuber3', 
+        array('id' => '3', 'username' => 'youtuber3', 'location' => 'unknown',
+            'first_name' => 'Jerry', 'last_name' => 'Li',
             'pic' => 'youtuber3.png', 'private' => 'false')
     );
 

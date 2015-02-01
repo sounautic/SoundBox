@@ -78,8 +78,6 @@ class Profile extends Application {
             $this->params['pagebody'] = 'profile';
             //concat the title with the name of the user
             $this->params['title'] = 'Profile of ' . $res['username'];
-            $playlists = $this->playlists->getByCreator($id);
-            $this->params['playlists'] = $playlists;
             //merge the obtained data
             $this->params = array_merge($this->params, $res);
         } else { //trying to access a private profile

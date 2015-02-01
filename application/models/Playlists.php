@@ -10,7 +10,7 @@ class Playlists extends CI_Model {
         array('id' => '1', 'creator' => '1', 'private' => 'false',
             'name' => 'Music videos',
             'content' => array(
-                'https://www.youtube.com/watch?v=qycqF1CWcXg',
+                'https//www.youtube.com/watch?v=qycqF1CWcXg',
                 'https://www.youtube.com/watch?v=CcsUYu0PVxY',
                 'https://www.youtube.com/watch?v=WVP3fUzQHcg',
                 'https://www.youtube.com/watch?v=FOIjvHjK0Rw',

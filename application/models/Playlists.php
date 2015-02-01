@@ -60,7 +60,6 @@ class Playlists extends CI_Model {
                 array_push($playlists, $playlist);
             }
         }
-        
         return $playlists;
     }
     

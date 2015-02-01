@@ -26,7 +26,7 @@ class Play extends Application {
     public function index() {
         $this->params['pagebody'] = 'play';
         $this->params['title'] = 'My playlists';
-            
+
         //for the time being we are pretending to be youtuber1
         $res['playlists'] = $this->playlists->getByCreator('1');
 
@@ -40,21 +40,31 @@ class Play extends Application {
      * for the time being this displays a list of videos. Will eventually
      * integrate the youtube api to create a better UI
      */
+
     public function play($id) {
 
         $res = $this->playlists->get($id);
         if ($res['private'] == 'false') {
             $this->params['pagebody'] = 'play_one';
-            //concat the title with the name of the user
+            //concat the title with the name of the playlist
             $this->params['title'] = 'Playlist - ' . $res['name'];
-            //merge the obtained data
+            
+            
             $this->params = array_merge($this->params, $res);
+            $this->params['content'] = '';
+            
+            /*
+             * can't figure out how to rendering a keyless array. Will eventually
+             * use the youtube api to create a list anyways
+             */ 
+            foreach ($res['content'] as $link) {
+                $this->params['content'] .= '<li><a href="'.$link.'">'.$link.'</a></li>';
+            }
         } else { //trying to access a private profile
             $this->params['pagebody'] = 'errors/access_restricted';
             $this->params['title'] = 'Ooops!';
-            
         }
-        
+
         $this->render();
     }
 

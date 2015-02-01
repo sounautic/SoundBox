@@ -38,11 +38,12 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Rankings extends Application  {
-    
+class Rankings extends Application {
+
     public function __construct() {
         parent::__construct();
     }
+
     /**
      * Index Page for this controller.
      *
@@ -59,9 +60,17 @@ class Rankings extends Application  {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        
+
         $this->params['pagebody'] = 'rankings';
         $this->params['title'] = 'Rankings';
+
+
+        //for the time being we are pretending to be youtuber1
+        $res['playlists'] = $this->playlists->all();
+
+        //merge the obtained data
+        $this->params = array_merge($this->params, $res);
+
         
         $this->render();
     }

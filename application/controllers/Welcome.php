@@ -58,9 +58,14 @@ class Welcome extends Application  {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public function index() {
-        
+    public function index($link = null) {
         $this->params['pagebody'] = 'welcome_message';
+        if (!isset($link)) {
+        $res = $this->playlists->get(1);
+        $this->params['playing'] = substr($res['content']['0'],-11);
+        } else {
+            $this->params['playing'] = $link;
+        }
         
         $this->render();
     }

@@ -4,6 +4,24 @@
 
 
 ================================================================================
+  Requirement & Status for Stage 2 (with mark schemes) by 
+================================================================================
+
+Todo
+----
+
+Admin page - add/edit/delete        (4)
+Usecases, home and 3x two levels    (4)
+Works properly?                     (3)
+
+Aestheics & consistency             (2)
+Controllers                         (2)
+Comments & Programming style        (2)
+Models, bound to DB tables          (2)
+Rich text and image uploading       (2)
+
+
+================================================================================
   Requirement & Status for Stage 1 (with mark schemes) by January 31 @ 9:00 PM
 ================================================================================
 

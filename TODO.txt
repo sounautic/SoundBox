@@ -1,0 +1,59 @@
+Controller
+----------
+Has methods (sub controllers)
+
+No need authenitfication (mock version is fine)
+    :   add link(s) to set/unset a session variable for an admin role
+        admin maintanance controller
+
+Table
+-----
+At least 2 - 4 tables
+
+Each model has additional methods than CRUD
+    :   supports data extraction & manipulation for usecaeses(?)
+        data filtering and "business logic" should be done in models
+
+" A controller using one or more models might have to filter/validate parameters."
+" Those would then be passed on the appropriate model method for data extraction."
+
+Usescases : Level 3
+-------------------
+More detailed usecases
+
+Admin page
+----------
+Provide maintance for "control" or "master file" data
+    :   CLUD related functionailites
+
+Larger "description" text area should be able to contain "rich text"
+    :   for rich text editor (ckeditor or tinymce)
+
+Data including images (links)
+    :   image uploading functionality
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

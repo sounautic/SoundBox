@@ -60,16 +60,7 @@ class Profile extends Application {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        $this->params['pagebody'] = 'profile';
-        $this->params['title'] = 'Profile';
-        $this->params['id'] = 1;
-
-        $res = $this->users->get_row_as_array($this->params['id']);
-
-        //Need a better way to use the $row data - probably have to add new method
-        $this->params = array_merge($this->params, $res);
-
-        $this->render();
+        $this->get(1);
     }
 
     public function get($id) {
@@ -80,9 +71,11 @@ class Profile extends Application {
                 $this->params['pagebody'] = 'profile';
                 //concat the title with the name of the user
                 $this->params['title'] = 'Profile of ' . $res['username'];
-                //$playlist = $this->playlists->getByCreator($id);
                 $this->params = array_merge($this->params, $res);
                 $this->params['playlists'] = $this->playlists->getByCreator($id);
+                if ($this->params['pic'] == null) {
+                    $this->params['pic'] = 'no_profile_image';
+                }
             } else { //trying to access a private profile
                 $this->params['pagebody'] = 'errors/profile_no_access';
                 $this->params['title'] = 'Ooops!';

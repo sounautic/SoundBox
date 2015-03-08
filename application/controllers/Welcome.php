@@ -61,8 +61,8 @@ class Welcome extends Application  {
     public function index($link = null) {
         $this->params['pagebody'] = 'welcome_message';
         if (!isset($link)) {
-        $res = $this->playlists->get(1);
-        $this->params['playing'] = substr($res['content']['0'],-11);
+        $res = $this->playlists->get_row_as_array(1);
+        $this->params['playing'] = $this->playlist_items->get_row_as_array(1)['link'];
         } else {
             $this->params['playing'] = $link;
         }

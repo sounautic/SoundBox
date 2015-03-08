@@ -62,10 +62,11 @@ class Profile extends Application {
     public function index() {
         $this->params['pagebody'] = 'profile';
         $this->params['title'] = 'Profile';
+        $this->params['id'] = 1;
 
-        $res = $this->users->first();
+        $res = $this->users->get_row_as_array($this->params['id']);
 
-        //merge the obtained data
+        //Need a better way to use the $row data - probably have to add new method
         $this->params = array_merge($this->params, $res);
 
         $this->render();
@@ -73,21 +74,24 @@ class Profile extends Application {
 
     public function get($id) {
 
-        $res = $this->users->get($id);
-        if ($res['private'] == 'false') {
-            $this->params['pagebody'] = 'profile';
-            //concat the title with the name of the user
-            $this->params['title'] = 'Profile of ' . $res['username'];
-            $res['playlists'] = $this->playlists->getByCreator($id);
-            
-        //merge the obtained data
-            $this->params = array_merge($this->params, $res);
-        } else { //trying to access a private profile
-            $this->params['pagebody'] = 'errors/profile_no_access';
-            $this->params['title'] = 'Ooops!';
-            
+        $res = $this->users->get_row_as_array($id);
+        if ($res != NULL) {
+            if ($res['private'] == 0) {
+                $this->params['pagebody'] = 'profile';
+                //concat the title with the name of the user
+                $this->params['title'] = 'Profile of ' . $res['username'];
+                //$playlist = $this->playlists->getByCreator($id);
+                $this->params = array_merge($this->params, $res);
+                $this->params['playlists'] = $this->playlists->getByCreator($id);
+            } else { //trying to access a private profile
+                $this->params['pagebody'] = 'errors/profile_no_access';
+                $this->params['title'] = 'Ooops!';
+            }
+        } else {
+            $this->params['pagebody'] = 'errors/error_general';
+            $this->params['title'] = '404 - Not found!';
+            $this->params['message'] = 'The user you are looking for does not exist!';
         }
-        
         $this->render();
     }
 

@@ -193,7 +193,7 @@ class MY_Model extends CI_Model implements Active_Record {
         $this->db->where($this->_keyField, $key);
         $query = $this->db->get($this->_tableName);
         if ($query->num_rows() < 1)
-            return null;
+            return array();
         return $query->row_array();
     }
 

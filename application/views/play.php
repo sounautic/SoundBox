@@ -1,9 +1,8 @@
 <div id="body">
-    <p>Here's a list of all your playlists:</p>
-    <br/>
-    <ul>
+    <h5 class='grey-text text-darken-2'>Your playlists:</h5>
+    <div class="collection">
     {playlists}
-    <li><a href="/play/{id}">{name}</a></li>
+        <a href="/play/{id}" class='collection-item red-text text-darken-4'>{name}</a>
     {/playlists}
-    </ul>
+    </div>
 </div>

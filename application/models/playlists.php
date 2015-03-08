@@ -3,14 +3,14 @@
 /**
  * A mock database model similiar to one one from lab3
  */
-class Playlists extends CI_Model {
+class Playlists extends MY_Model {
 
     // mock data. Will be replaced with a sql data source eventually
     var $data = array(
         array('id' => '1', 'creator' => '1', 'private' => 'false',
             'name' => 'Music videos',
             'content' => array(
-                'https//www.youtube.com/watch?v=qycqF1CWcXg',
+                'https://www.youtube.com/watch?v=qycqF1CWcXg',
                 'https://www.youtube.com/watch?v=CcsUYu0PVxY',
                 'https://www.youtube.com/watch?v=WVP3fUzQHcg',
                 'https://www.youtube.com/watch?v=FOIjvHjK0Rw',
@@ -39,28 +39,16 @@ class Playlists extends CI_Model {
 
     // Constructor
     public function __construct() {
-        parent::__construct();
-    }
-
-    // gets a specific playlist
-    public function get($which) {
-        // iterate over the data until we find the one we want
-        foreach ($this->data as $playlist) {
-            if ($playlist['id'] == $which) {
-                return $playlist;
-            }
-        }
-        return null;
+        parent::__construct('playlist', 'id');
     }
 
     public function getByCreator($which) {
-        $playlists = array();
-        foreach ($this->data as $playlist){
-            if ($playlist['creator'] == $which) {
-                array_push($playlists, $playlist);
-            }
-        }
-        return $playlists;
+        
+        $this->db->where('creator', $which);
+        $query = $this->db->get($this->_tableName);
+        if ($query->num_rows() < 1)
+            return array();
+        return $query->result_array();
     }
     
     // retrieve all users

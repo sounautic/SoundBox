@@ -82,6 +82,7 @@ class Profile extends Application {
                 $this->params['title'] = 'Profile of ' . $res['username'];
                 //$playlist = $this->playlists->getByCreator($id);
                 $this->params = array_merge($this->params, $res);
+                $this->params['playlists'] = $this->playlists->getByCreator($id);
             } else { //trying to access a private profile
                 $this->params['pagebody'] = 'errors/profile_no_access';
                 $this->params['title'] = 'Ooops!';

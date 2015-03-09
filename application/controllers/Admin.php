@@ -85,15 +85,13 @@ class Admin extends Application {
 
                 $this->load->library('ckeditor');
                 $this->load->library('ckfinder');
-                $this->ckeditor->basePath = base_url() . 'asset/ckeditor/';
+                $this->ckeditor->basePath = base_url() . 'assets/ckeditor/';
                 $this->ckeditor->config['language'] = 'en';
                 $this->ckeditor->config['width'] = '730px';
-                $this->ckeditor->config['height'] = '300px';
-
-                $data['user_profile'] = $res['profile'];
-
+                $this->ckeditor->config['height'] = '600px';
+                
                 //Add Ckfinder to Ckeditor
-                $this->ckfinder->SetupCKEditor($this->ckeditor, '../asset/ckfinder/');
+                $this->ckfinder->SetupCKEditor($this->ckeditor, 'assets/ckfinder/');
             } else { //trying to access a private profile
                 $this->params['pagebody'] = 'errors/profile_no_access';
                 $this->params['title'] = 'Ooops!';
@@ -103,50 +101,46 @@ class Admin extends Application {
             $this->params['title'] = '404 - Not found!';
             $this->params['message'] = 'The user you are looking for does not exist!';
         }
-        $this->render($data);
+        $this->render();
     }
 
-    public function upload_recieve() {
+    public function upload_receive() {
 
         $config['upload_path'] = './static/user';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = '1024';
         $config['max_width'] = '1024';
         $config['max_height'] = '768';
+
         $this->load->library('upload', $config);
-        if (!$this->upload->do_upload()) {
-            $error = array('error' => $this->upload->display_errors());
-            $this->load->view('upload_form', $error);
+
+        if (!$this->upload->do_upload("upload")) {
+            echo $this->upload->display_errors();
         } else {
-            $data = array('upload_data' => $this->upload->data());
-            $this->load->view('upload_success', $data);
+            $CKEDitorFuncNum = $this->input->get('CKEditorFuncNum');
+
+            $data = $this->upload->data();
+            $filename = $data['file_name'];
+            $url = '/static/user/' . $filename;
+
+            var_dump($data);
+            echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction('" . $CKEDitorFuncNum . "','" . $url . "','Complete upload');</script>";
         }
-//        if ($this->input->post('upload')) {
-//            $config['upload_path'] = './uploads/';
-//            $config['allowed_types'] = 'gif|jpg|png';
-//            $config['max_size'] = '1024';
-//            $config['max_width'] = '1024';
-//            $config['max_height'] = '768';
-//            $this->load->library('upload', $config);
-//            if (!$this->upload->do_upload()) {
-//                $error = array('error' => $this->upload->display_errors());
-//                $this->load->view('upload_form', $error);
-//            } else {
-//                $data = $this->upload->data();
-//                $this->thumb($data);
-//                $file = array(
-//                    'img_name' => $data['raw_name'],
-//                    'thumb_name' => $data['raw_name'] . '_thumb',
-//                    'ext' => $data['file_ext'],
-//                    'upload_date' => time()
-//                );
-//                $this->upload_model->add_image($file);
-//                $data = array('upload_data' => $this->upload->data());
-//                $this->load->view('upload_success', $data);
-//            }
-//        } else {
-//            redirect(site_url('upload'));
-//        }
+    }
+
+    public function update_data() {
+        $id = $this->input->post('userID');
+        $data = array(
+            'username' => $this->input->post('username'),
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
+            'location' => $this->input->post('location'),
+            'profile' => $this->input->post('profile')
+        );
+        
+        $this->load->model('users');
+        $this->users->update_table($id, $data);
+        $this->index();
     }
 
 }

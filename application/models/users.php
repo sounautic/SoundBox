@@ -10,7 +10,9 @@ class Users extends MY_Model {
         parent::__construct('user_detail', 'id'); //references the user_detail table on id
     }
 
-    function add_image($data) {
-        $this->db->insert('pic', $data);
+    function update_table($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('user_detail', $data);
     }
+
 }

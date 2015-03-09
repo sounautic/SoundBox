@@ -86,7 +86,7 @@ class Profile extends Application {
             $this->params['message'] = 'The user you are looking for does not exist!';
         }
         if ($selfid == $id)
-            $this->params['edit'] = '<a class="red-text text-darken-2">Edit</a>';
+            $this->params['edit'] = '<a class="red-text text-darken-2" href="/admin/edit_user_profile/'.$this->session_get_user().'">Edit</a>';
         else
             $this->params['edit'] = '';
         $this->render();

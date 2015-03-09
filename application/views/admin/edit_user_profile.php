@@ -9,20 +9,21 @@
         First Name: <input type="text" name="firstname" placeholder="First Name" value={first_name}>
         Last Name:  <input type="text" name="lastname" placeholder="Last Name" value={last_name}>
         Location:   <input type="text" name="location" placeholder="Location" value={location}>
-        Picture:    <input type="file" name
         Profile:<br/>
         <textarea name="description" placeholder="description" rows="15">{profile}</textarea>
         <input class="btn" type="submit" value="Update"/>
     </form>
     <script>
-        CKEDITOR.replace('description');
+        CKEDITOR.replace('description', {
+            'filebrowserUploadUrl': '/admin/upload_receive'
+        });
     </script>
     
     <br/>
     <p>{username}'s playlists:</p>
     <ul>
         {playlists}
-        <li><a href="/play/{id}">{name}</a></li>
+        <li><a href="/play/{id}" style="color: red">{name}</a></li>
         {/playlists}
     </ul>
 </div>

@@ -39,7 +39,7 @@ class Update_playlist extends Application {
         // Extract submitted fields
         $record->name = $this->input->post('name');
         $record->private = $this->input->post('private');
-        $record->creator = $this->session_get_user();
+        $record->creator = session_get_user();
         //throw errors if fields are not filled
         if (empty($record->name))
             $this->errors[] = 'You must specify a name for the playlist.';
@@ -57,11 +57,6 @@ class Update_playlist extends Application {
         else
             $this->playlists->update($record);
         redirect('/play');
-    }
-
-    //placeholder for getting the user_id from session
-    function session_get_user() {
-        return 1;
     }
 
 }

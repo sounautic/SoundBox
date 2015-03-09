@@ -60,14 +60,14 @@ class Profile extends Application {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        $this->get(1);
+        $this->get($this->session_get_user());
     }
 
     public function get($id) {
-
+        $selfid = $this->session_get_user();
         $res = $this->users->get_row_as_array($id);
         if ($res != NULL) {
-            if ($res['private'] == 0) {
+            if ($selfid == $id || $res['private'] == 0) {
                 $this->params['pagebody'] = 'profile';
                 //concat the title with the name of the user
                 $this->params['title'] = 'Profile of ' . $res['username'];
@@ -85,7 +85,14 @@ class Profile extends Application {
             $this->params['title'] = '404 - Not found!';
             $this->params['message'] = 'The user you are looking for does not exist!';
         }
+        if ($selfid == $id) $this->params['edit'] = '<a class="red-text text-darken-2">Edit</a>';
+        else $this->params['edit'] = '';
         $this->render();
+    }
+    
+    //placeholder for getting the user_id from session
+    function session_get_user(){
+        return 1;
     }
 
 }

@@ -60,11 +60,11 @@ class Profile extends Application {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        $this->get($this->session_get_user());
+        $this->get(session_get_user());
     }
 
     public function get($id) {
-        $selfid = $this->session_get_user();
+        $selfid = session_get_user();
         $res = $this->users->get_row_as_array($id);
         if ($res != NULL) {
             if ($selfid == $id || $res['private'] == 0) {
@@ -86,17 +86,11 @@ class Profile extends Application {
             $this->params['message'] = 'The user you are looking for does not exist!';
         }
         if ($selfid == $id)
-            $this->params['edit'] = '<a class="red-text text-darken-2" href="/admin/edit_user_profile/'.$this->session_get_user().'">Edit</a>';
+            $this->params['edit'] = '<a class="red-text text-darken-2" href="/admin/edit_user_profile/'.session_get_user().'">Edit</a>';
         else
             $this->params['edit'] = '';
         $this->render();
     }
-
-//placeholder for getting the user_id from session
-    function session_get_user() {
-        return 1;
-    }
-
 }
 
 /* End of file welcome.php */

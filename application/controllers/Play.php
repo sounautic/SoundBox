@@ -43,7 +43,7 @@ class Play extends Application {
     public function play($id) {
         if ($this->playlists->exists($id)) {
             $res = $this->playlists->get_row_as_array($id);
-            if ($res['private'] == 0) {
+            if ($res['creator'] == session_get_user() || $res['private'] == 0 ) {
                 $this->params['pagebody'] = 'play_one';
                 //concat the title with the name of the playlist
                 $this->params['title'] = 'Playlist - ' . $res['name'];

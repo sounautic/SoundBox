@@ -48,11 +48,13 @@ class Play extends Application {
                 //concat the title with the name of the playlist
                 $this->params['title'] = 'Playlist - ' . $res['name'];
 
-
                 $this->params = array_merge($this->params, $res);
                 $videos = $this->playlist_items->get_as_array($id);
                 $this->_link_videos($videos,$id);
                 $this->params['content'] = $videos;
+                if($this->params['creator'] == $this->playlists->getCreator($id)) {
+                    $this->params['hide_edit'] = '';
+                } else $this->params['hide_edit'] = 'hidden';
             } else { //trying to access a private profile
                 $this->params['pagebody'] = 'errors/access_restricted';
                 $this->params['title'] = 'Ooops!';

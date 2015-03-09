@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CodeIgniter
  *
@@ -36,10 +37,13 @@
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Profile extends Application {
+
     public function __construct() {
         parent::__construct();
     }
+
     /**
      * Index Page for this controller.
      *
@@ -56,24 +60,22 @@ class Profile extends Application {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public function index() {
-        $this->params['pagebody'] = 'profile';
-        $this->params['title'] = 'Profile';
-        $this->params['id'] = 1;
-        $res = $this->users->get_row_as_array($this->params['id']);
-        //Need a better way to use the $row data - probably have to add new method
-        $this->params = array_merge($this->params, $res);
-        $this->render();
+        $this->get($this->session_get_user());
     }
+
     public function get($id) {
+        $selfid = $this->session_get_user();
         $res = $this->users->get_row_as_array($id);
         if ($res != NULL) {
-            if ($res['private'] == 0) {
+            if ($selfid == $id || $res['private'] == 0) {
                 $this->params['pagebody'] = 'profile';
                 //concat the title with the name of the user
                 $this->params['title'] = 'Profile of ' . $res['username'];
-                //$playlist = $this->playlists->getByCreator($id);
                 $this->params = array_merge($this->params, $res);
                 $this->params['playlists'] = $this->playlists->getByCreator($id);
+                if ($this->params['pic'] == null) {
+                    $this->params['pic'] = 'no_profile_image';
+                }
             } else { //trying to access a private profile
                 $this->params['pagebody'] = 'errors/profile_no_access';
                 $this->params['title'] = 'Ooops!';
@@ -83,8 +85,19 @@ class Profile extends Application {
             $this->params['title'] = '404 - Not found!';
             $this->params['message'] = 'The user you are looking for does not exist!';
         }
+        if ($selfid == $id)
+            $this->params['edit'] = '<a class="red-text text-darken-2">Edit</a>';
+        else
+            $this->params['edit'] = '';
         $this->render();
     }
+
+//placeholder for getting the user_id from session
+    function session_get_user() {
+        return 1;
+    }
+
 }
+
 /* End of file welcome.php */
 /* Location: ./application/controllers/Welcome.php */

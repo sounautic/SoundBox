@@ -38,11 +38,12 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends Application  {
-    
+class Welcome extends Application {
+
     public function __construct() {
         parent::__construct();
     }
+
     /**
      * Index Page for this controller.
      *
@@ -58,16 +59,43 @@ class Welcome extends Application  {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public function index($link = null) {
+    public function index($link = null, $playlist = null) {
         $this->params['pagebody'] = 'welcome_message';
         if (!isset($link)) {
-        $res = $this->playlists->get_row_as_array(1);
-        $this->params['playing'] = $this->playlist_items->get_row_as_array(1)['link'];
+            $res = $this->playlist_items->get_as_array(1);
+            $this->params['playing'] = $res[0]['link'];
+            $this->_highligh_link($res, $res[0]['link']);
+            //modify the links
+            $this->_link_videos($res, 1);
+
+            $this->params['content'] = $res;
         } else {
             $this->params['playing'] = $link;
+            if (isset($playlist)) {
+                $res = $this->playlist_items->get_as_array($playlist);
+                $this->_highligh_link($res, $link);
+                $this->_link_videos($res, $playlist);
+                $this->params['content'] = $res;
+            }
         }
-        
+
         $this->render();
+    }
+
+    private function _link_videos(&$array, $playlist_id) {
+        foreach ($array as &$record) {
+            $record['link'] = '/play_video/' . $playlist_id . '/' . $record['link'];
+        }
+    }
+
+    private function _highligh_link(&$array, $link) {
+        foreach ($array as &$record) {
+            if ($record['link'] == $link) {
+                $record['highlight'] = ' grey-text text-lighten-4 red darken-4 ';
+            } else {
+                $record['highlight'] = ' red-text text-darken-4 ';
+            }
+        }
     }
 
 }

@@ -1,9 +1,10 @@
 
 <div id="body">
-    <p>Daily ranking:</p>
-    <ul>
+    
+    <h5 class='grey-text text-darken-2'>Rankings</h5>
+    <div class="collection">
     {playlists}
-    <li><a href="/play/{id}">{name}</a></li>
+        <a href="/play/{id}" class='collection-item red-text text-darken-4'>{name}</a>
     {/playlists}
-    </ul>
+    </div>
 </div>

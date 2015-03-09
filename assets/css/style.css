@@ -11,8 +11,8 @@ nav, footer.page-footer{
     width:100%; margin-left:auto;margin-right:auto;    position: relative;
 }
 
-a, a:hover{
-    
+a{
+   color: white;
 }
 
 .inner-body{

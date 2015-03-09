@@ -100,17 +100,18 @@ CREATE TABLE IF NOT EXISTS `user_detail` (
   `last_name` text NOT NULL,
   `pic` varchar(35) DEFAULT NULL,
   `private` tinyint(1) NOT NULL DEFAULT '0',
-  `location` text NOT NULL
+  `location` text NOT NULL,
+  `profile` text
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_detail`
 --
 
-INSERT INTO `user_detail` (`id`, `username`, `first_name`, `last_name`, `pic`, `private`, `location`) VALUES
-(1, 'youtuber1', 'John', 'Smith', NULL, 0, 'Vancouver'),
-(2, 'youtuber2', 'Billy', 'Bob', NULL, 1, 'Surrey'),
-(3, 'youtuber3', 'Michael', 'Mahneke', NULL, 0, 'Surrey');
+INSERT INTO `user_detail` (`id`, `username`, `first_name`, `last_name`, `pic`, `private`, `location`, `profile`) VALUES
+(1, 'youtuber1', 'John', 'Smith', NULL, 0, 'Vancouver', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis justo eu ante viverra elementum. Mauris egestas nec turpis quis dignissim. Morbi viverra nec neque ac consequat. Nam lacinia tempor tortor, et scelerisque justo cursus eu. Nullam commodo libero maximus tellus maximus posuere. Vivamus et faucibus dolor. Nunc efficitur dolor sit amet arcu convallis, et tempor lacus tincidunt. Vivamus sed vulputate dolor, bibendum porttitor lacus. Praesent vel ipsum nec tellus gravida elementum. Vestibulum vitae velit nec justo ullamcorper commodo. Phasellus vel nisi at turpis mollis vestibulum sed vel felis. Donec et fringilla nisl, sed tempor mauris.'),
+(2, 'youtuber2', 'Billy', 'Bob', NULL, 1, 'Surrey', 'Nam quis libero commodo, accumsan turpis nec, posuere libero. Ut dictum at urna rutrum aliquam. Curabitur sodales lacus ac ligula tristique, eu tincidunt mi tincidunt. Nam scelerisque rhoncus sem, in egestas nulla condimentum quis. Curabitur porttitor quam eu dignissim fermentum. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla nibh nisi, congue at condimentum at, viverra ut nibh. Aliquam erat volutpat. Mauris ante erat, vehicula nec lectus ac, accumsan pulvinar purus. Suspendisse potenti. Mauris quis scelerisque tortor. Suspendisse in elit pulvinar, pretium ante a, tempus mi.'),
+(3, 'youtuber3', 'Michael', 'Mahneke', NULL, 0, 'Surrey', 'Curabitur pellentesque aliquam facilisis. Duis dolor nibh, hendrerit ut bibendum eget, commodo a enim. Sed imperdiet tincidunt ante. Sed eu nisl orci. Donec et velit blandit, semper dolor et, condimentum magna. Donec aliquam quis lorem sit amet eleifend. Cras laoreet ut risus semper tempor. Proin et tempor arcu. Ut non libero gravida, aliquam turpis et, condimentum odio. In non fermentum turpis. Proin id porttitor enim. Quisque id consectetur magna. Morbi et orci vel risus pretium dapibus sed sit amet justo.');
 
 --
 -- Indexes for dumped tables

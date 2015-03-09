@@ -96,5 +96,9 @@ $route['about'] = 'about';
 $route['play'] = 'play';
 $route['play/(:num)'] = 'play/play/$1';
 $route['play_video/(:any)'] = 'welcome/index/$1';
+$route['play_video/(:any)/(:any)'] = 'welcome/index/$2/$1';
+$route['add_playlist'] = 'update_playlist/add_playlist';
+$route['add_to_playlist'] = 'update_playlist_content/add_item_to_playlist';
+$route['add_to_playlist/(:num)'] = 'update_playlist_content/add_item_to_playlist/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

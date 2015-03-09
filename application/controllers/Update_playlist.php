@@ -7,21 +7,25 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends Application {
+class Update_playlist extends Application {
 
     public function __construct() {
         parent::__construct();
         $this->load->helper('formfields');
     }
 
-    function Index($prev = null) {
-        
-        $this->params['pagebody'] = 'login';
-        $this->params['title'] = 'Login';
+    function add_playlist() {
+        $playlist = $this->playlists->create();
+        $this->edit_playlist($playlist);
+    }
+
+    function edit_playlist($playlist) {
+        $this->params['pagebody'] = 'addplaylist';
+        $this->params['title'] = 'Add/Edit playlist';
         $this->params['message'] = '';
-        $this->params['name'] = makeTextField('Username', 'username', null);
-        $this->params['password'] = makeTextField('Password', 'password', null);
-        $this->params['submit'] = makeSubmitButton('Submit', "Submit login request", 'btn-success');
+        $this->params['name'] = makeTextField('Playlist Name', 'name', $playlist->name);
+        $this->params['private'] = makeTextField('Set Video to Private?', 'private', $playlist->private);
+        $this->params['submit'] = makeSubmitButton('Process playlist', "Click here to validate the quotation data", 'btn-success');
         if (count($this->errors) > 0) {
             foreach ($this->errors as $booboo)
                 $this->params['message'] .= $booboo . '<br/>';
@@ -35,7 +39,7 @@ class Login extends Application {
         // Extract submitted fields
         $record->name = $this->input->post('name');
         $record->private = $this->input->post('private');
-        $record->creator = $this->session_get_user();
+        $record->creator = session_get_user();
         //throw errors if fields are not filled
         if (empty($record->name))
             $this->errors[] = 'You must specify a name for the playlist.';
@@ -53,11 +57,6 @@ class Login extends Application {
         else
             $this->playlists->update($record);
         redirect('/play');
-    }
-
-    //placeholder for getting the user_id from session
-    function session_get_user() {
-        return 1;
     }
 
 }

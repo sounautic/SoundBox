@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CodeIgniter
  *
@@ -37,13 +36,10 @@
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Profile extends Application {
-
     public function __construct() {
         parent::__construct();
     }
-
     /**
      * Index Page for this controller.
      *
@@ -63,17 +59,12 @@ class Profile extends Application {
         $this->params['pagebody'] = 'profile';
         $this->params['title'] = 'Profile';
         $this->params['id'] = 1;
-
         $res = $this->users->get_row_as_array($this->params['id']);
-
         //Need a better way to use the $row data - probably have to add new method
         $this->params = array_merge($this->params, $res);
-
         $this->render();
     }
-
     public function get($id) {
-
         $res = $this->users->get_row_as_array($id);
         if ($res != NULL) {
             if ($res['private'] == 0) {
@@ -92,11 +83,8 @@ class Profile extends Application {
             $this->params['title'] = '404 - Not found!';
             $this->params['message'] = 'The user you are looking for does not exist!';
         }
-        
         $this->render();
     }
-
 }
-
 /* End of file welcome.php */
 /* Location: ./application/controllers/Welcome.php */

@@ -41,23 +41,35 @@ class Play extends Application {
      */
 
     public function play($id) {
+        if ($this->playlists->exists($id)) {
+            $res = $this->playlists->get_row_as_array($id);
+            if ($res['private'] == 0) {
+                $this->params['pagebody'] = 'play_one';
+                //concat the title with the name of the playlist
+                $this->params['title'] = 'Playlist - ' . $res['name'];
 
-        $res = $this->playlists->get_row_as_array($id);
-        if ($res['private'] == 0) {
-            $this->params['pagebody'] = 'play_one';
-            //concat the title with the name of the playlist
-            $this->params['title'] = 'Playlist - ' . $res['name'];
-            
-            
-            $this->params = array_merge($this->params, $res);
-            $this->params['content'] = $this->playlist_items->get_as_array($id);
-            
-        } else { //trying to access a private profile
-            $this->params['pagebody'] = 'errors/access_restricted';
+
+                $this->params = array_merge($this->params, $res);
+                $videos = $this->playlist_items->get_as_array($id);
+                $this->_link_videos($videos,$id);
+                $this->params['content'] = $videos;
+            } else { //trying to access a private profile
+                $this->params['pagebody'] = 'errors/access_restricted';
+                $this->params['title'] = 'Ooops!';
+            }
+        } else {
+            $this->params['pagebody'] = 'errors/error_general';
             $this->params['title'] = 'Ooops!';
+            $this->params['message'] = 'The playlist you are looking for does not exist!';
         }
 
         $this->render();
+    }
+
+    public function _link_videos(&$array, $playlist_id) {
+        foreach ($array as &$record) {
+            $record['link'] = '/play_video/' . $playlist_id . '/' . $record['link'];
+        }
     }
 
 }

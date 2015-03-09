@@ -7,6 +7,10 @@ class Users extends MY_Model {
 
     // Constructor
     public function __construct() {
-        parent::__construct('user_detail','id'); //references the user_detail table on id
+        parent::__construct('user_detail', 'id'); //references the user_detail table on id
+    }
+
+    function add_image($data) {
+        $this->db->insert('pic', $data);
     }
 }

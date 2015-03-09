@@ -92,6 +92,7 @@ class Profile extends Application {
             $this->params['title'] = '404 - Not found!';
             $this->params['message'] = 'The user you are looking for does not exist!';
         }
+        
         $this->render();
     }
 

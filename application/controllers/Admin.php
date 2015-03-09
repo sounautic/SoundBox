@@ -38,20 +38,26 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends Application  {
-    
+class Admin extends Application {
+
     public function __construct() {
         parent::__construct();
+
+        $this->load->model('users');
     }
-    
+
     public function index() {
-        
+
         $this->params['pagebody'] = 'admin/main';
         $this->params['title'] = 'Admin';
-        
+
+        $res['userlists'] = $this->users->all();
+
+        //merge the obtained data
+        $this->params = array_merge($this->params, $res);
         $this->render();
     }
-    
+
     public function edit_description() {
         $this->load->library('ckeditor');
         $this->load->library('ckfinder');
@@ -61,11 +67,86 @@ class Admin extends Application  {
         $this->ckeditor->config['height'] = '300px';
         //Add Ckfinder to Ckeditor
         $this->ckfinder->SetupCKEditor($this->ckeditor, '../asset/ckfinder/');
-        
-        $this->params['pagebody'] = 'admin/edit_description';
+
+        $this->params['pagebody'] = 'admin/edit_user_profile';
         $this->params['title'] = 'Admin';
-        
+
         $this->render();
+    }
+
+    public function edit_user_profile($id) {
+        $res = $this->users->get_row_as_array($id);
+        if ($res != NULL) {
+            if ($res['private'] == 0) {
+                $this->params['pagebody'] = 'admin/edit_user_profile';
+                $this->params['title'] = 'Admin: Edit Profile of ' . $res['username'];
+                $this->params = array_merge($this->params, $res);
+                $this->params['playlists'] = $this->playlists->getByCreator($id);
+
+                $this->load->library('ckeditor');
+                $this->load->library('ckfinder');
+                $this->ckeditor->basePath = base_url() . 'asset/ckeditor/';
+                $this->ckeditor->config['language'] = 'en';
+                $this->ckeditor->config['width'] = '730px';
+                $this->ckeditor->config['height'] = '300px';
+
+                $data['user_profile'] = $res['profile'];
+
+                //Add Ckfinder to Ckeditor
+                $this->ckfinder->SetupCKEditor($this->ckeditor, '../asset/ckfinder/');
+            } else { //trying to access a private profile
+                $this->params['pagebody'] = 'errors/profile_no_access';
+                $this->params['title'] = 'Ooops!';
+            }
+        } else {
+            $this->params['pagebody'] = 'errors/error_general';
+            $this->params['title'] = '404 - Not found!';
+            $this->params['message'] = 'The user you are looking for does not exist!';
+        }
+        $this->render($data);
+    }
+
+    public function upload_recieve() {
+
+        $config['upload_path'] = './static/user';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '1024';
+        $config['max_width'] = '1024';
+        $config['max_height'] = '768';
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload()) {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('upload_form', $error);
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success', $data);
+        }
+//        if ($this->input->post('upload')) {
+//            $config['upload_path'] = './uploads/';
+//            $config['allowed_types'] = 'gif|jpg|png';
+//            $config['max_size'] = '1024';
+//            $config['max_width'] = '1024';
+//            $config['max_height'] = '768';
+//            $this->load->library('upload', $config);
+//            if (!$this->upload->do_upload()) {
+//                $error = array('error' => $this->upload->display_errors());
+//                $this->load->view('upload_form', $error);
+//            } else {
+//                $data = $this->upload->data();
+//                $this->thumb($data);
+//                $file = array(
+//                    'img_name' => $data['raw_name'],
+//                    'thumb_name' => $data['raw_name'] . '_thumb',
+//                    'ext' => $data['file_ext'],
+//                    'upload_date' => time()
+//                );
+//                $this->upload_model->add_image($file);
+//                $data = array('upload_data' => $this->upload->data());
+//                $this->load->view('upload_success', $data);
+//            }
+//        } else {
+//            redirect(site_url('upload'));
+//        }
     }
 
 }

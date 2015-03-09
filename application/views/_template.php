@@ -35,7 +35,7 @@ if (!defined('APPPATH'))
                     <!--this will eventually link to the 
                     logged in user's profile.
                     profile id 1 is used for the time being-->
-                    <li><a href="/">Login</a></li>
+                    <li><a href="/login">Login</a></li>
                     <li><a href="/profile/1">Profile</a></li>
                     <li>
                         <a href="/play">

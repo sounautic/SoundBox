@@ -4,21 +4,30 @@
 
     <br/>
     <br/>
-    <form action="/admin/upload_receive" method="POST" enctype="multipart/form-data">
-        User ID:    <input type="text" name="username" placeholder="ID" value={username}>
-        First Name: <input type="text" name="firstname" placeholder="First Name" value={first_name}>
-        Last Name:  <input type="text" name="lastname" placeholder="Last Name" value={last_name}>
-        Location:   <input type="text" name="location" placeholder="Location" value={location}>
-        Profile:<br/>
-        <textarea name="description" placeholder="description" rows="15">{profile}</textarea>
+    <form action="/admin/update_data" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="userID" value={id}>
+        
+        <label>User ID:</label>
+        <input type="text" name="username" value={username}>
+        
+        <label>First Name:</label>
+        <input type="text" name="first_name" value={first_name}>
+        
+        <label>Last Name:</label>
+        <input type="text" name="last_name" value={last_name}>
+        
+        <label>Location:</label>
+        <input type="text" name="location" value={location}>
+        
+        <textarea name="profile">{profile}</textarea>
         <input class="btn" type="submit" value="Update"/>
     </form>
     <script>
-        CKEDITOR.replace('description', {
+        CKEDITOR.replace('profile', {
             'filebrowserUploadUrl': '/admin/upload_receive'
         });
     </script>
-    
+
     <br/>
     <p>{username}'s playlists:</p>
     <ul>
